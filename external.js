@@ -1,25 +1,34 @@
-import { createForecastCard } from './external.js';
+export function updateWeatherWidget(weatherData) {
+    try {
+        console.log(weatherData)
 
-export function display5DayForecast(data, forecastContainer) {
-    forecastContainer.innerHTML = ''; // Clear previous forecast
+        document.querySelector(".pays").innerHTML = weatherData.location.country;
 
-    if (data && data.list) {
-        for (let i = 0; i < 5; i++) {
-            const forecastItem = data.list[i * 8]; // Data for each day at 12:00 PM
+        document.querySelector(".actuelTemp").innerHTML = `${weatherData.location.name} ${weatherData.current.temp_c}°C`;
+      
+        document.querySelector(".feelsLike").innerHTML = `Feels like ${weatherData.current.feelslike_c}°C`;
+        document.querySelector(".Humidity").innerHTML = `Humidity: ${weatherData.current.humidity}`;
+        document.querySelector(".uvIndex").innerHTML = `UV index: ${weatherData.current.uv}`;
+    
 
-            if (forecastItem) {
-                const date = new Date(forecastItem.dt * 1000);
-                const card = createForecastCard(date, forecastItem);
-                forecastContainer.appendChild(card);
-            }
-        }
+        document.querySelector(".wind").innerHTML = `Local time: ${weatherData.location.localtime}`;
+
+
+        const weatherImg = document.querySelector(".currentWeatherImg img");
+        weatherImg.src = "https:" + weatherData.current.condition.icon;
+        weatherImg.alt = weatherData.current.condition.text;
+
+
+        const selectMe = document.querySelector('.wind');
+        selectMe.innerHTML = "forcast: ";
+        const imageIcon = document.createElement("img");
+        imageIcon.src = "https:" + weatherData.current.condition.icon
+        imageIcon.alt = weatherData.current.condition.text
+
+        selectMe.appendChild(imageIcon);
+    } catch (e) {
+        console.log(e)
     }
 
-    const promesse = new Promise((resolve, reject) => {
-        if(city ){
-    
-            resolve ('success');
-    
-        } else { reject("invalid city")}
-    })
 }
+
