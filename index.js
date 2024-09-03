@@ -33,9 +33,25 @@ const city = document.querySelector(".inputSearch").value;
         //url = "http://api.weatherapi.com/v1/current.json?key=8daf0ce337db47e4be111942240109&aqi=yes&q="
 
         if(!city ){
-            alert("Enter a valid city")
-
-    
-           
+            alert("Enter a valid city")          
     }
 })
+const myForm = document.querySelector(".formData");
+myForm.addEventListener("submit",event =>{
+    event.preventDefault();
+    const LaForm = new FormData (myForm);
+    const data = new URLSearchParams(LaForm)
+
+fetch("https://reqres.in/api/users", {
+    method: 'POST',
+    // headers:{
+    //     'content-Type': 'application/json',
+        body: data
+    }).then(res => res.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+
+})
+
+
+

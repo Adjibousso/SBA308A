@@ -94,3 +94,13 @@ flex: 1;
     font-size:x-large;
     font-weight: bold;
 }
+
+.formData{
+margin-top: -300px;
+
+}
+.feedBack{
+    height: 80px;
+    border-color: #1f1e1e solid;
+    box-shadow: 10px 5px rgb(148, 68, 68);
+}
