@@ -11,16 +11,17 @@ export function updateWeatherWidget(weatherData) {
         document.querySelector(".uvIndex").innerHTML = `UV index: ${weatherData.current.uv}`;
     
 
-        document.querySelector(".wind").innerHTML = `Local time: ${weatherData.location.localtime}`;
-
+        document.querySelector(".sunset").innerHTML = 'Wind Speed ' + weatherData.current.wind_mph
+        //`Local time: ${weatherData.location.localtime}`;
+        document.querySelector(".clarite").innerHTML = 'Clarity ' + weatherData.current.wind_mph
 
         const weatherImg = document.querySelector(".currentWeatherImg img");
         weatherImg.src = "https:" + weatherData.current.condition.icon;
         weatherImg.alt = weatherData.current.condition.text;
 
 
-        const selectMe = document.querySelector('.wind');
-        selectMe.innerHTML = "forcast: ";
+         const selectMe = document.querySelector('.wind');
+         selectMe.innerHTML = "forcast: ";
         const imageIcon = document.createElement("img");
         imageIcon.src = "https:" + weatherData.current.condition.icon
         imageIcon.alt = weatherData.current.condition.text

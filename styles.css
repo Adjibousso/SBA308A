@@ -85,7 +85,7 @@ flex: 1;
 .details { 
     display: flex;
     justify-content: space-between;
-    font-size: large;
+    font-size: medium;
     font-style:oblique;
     font-weight: bold;
 }
